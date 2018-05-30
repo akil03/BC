@@ -28,8 +28,7 @@ public class CreepMovement : MonoBehaviour {
 
 
         Vector3 newPos = new Vector3(Random.Range(1, 32), Random.Range(-1, -32), -1);
-        //transform.GetChild(0).LookAt(newPos);
-        //transform.GetChild(0).localRotation = Quaternion.Euler(0, transform.GetChild(0).localRotation.y, 0);
+
 
 
         float time = Vector3.Distance(transform.position, newPos) / speed;
@@ -41,7 +40,7 @@ public class CreepMovement : MonoBehaviour {
             StartMove();
         }
         else
-            transform.DOMove(newPos, time).SetEase(Ease.Linear).OnComplete(() => {
+            transform.DOMove(newPos, time).OnComplete(() => {
                 StartMove();
             });
 
