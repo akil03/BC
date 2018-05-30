@@ -421,6 +421,34 @@ public class Snake : MonoBehaviour
             ActivateRandom();
         }
 
+        if (coll.tag == "Speed")
+        {
+            Destroy(coll.gameObject);
+            SnakesSpawner.instance.spawnedPowerCount--;
+            ActivateSpeed();
+        }
+
+        if (coll.tag == "Shield")
+        {
+            Destroy(coll.gameObject);
+            SnakesSpawner.instance.spawnedPowerCount--;
+            ActivateShields();
+        }
+
+        if (coll.tag == "Score")
+        {
+            Destroy(coll.gameObject);
+            SnakesSpawner.instance.spawnedPowerCount--;
+            ActivateMultiplier();
+        }
+
+        if (coll.tag == "Slow")
+        {
+            Destroy(coll.gameObject);
+            SnakesSpawner.instance.spawnedPowerCount--;
+            ActivateTimeSlow();
+        }
+
     }
 
 	public void SpawnDiamonds(){

@@ -8,6 +8,10 @@ TagManager:
   - Fire
   - Random
   - Enemy
+  - Speed
+  - Shield
+  - Slow
+  - Score
   layers:
   - Default
   - TransparentFX

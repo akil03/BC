@@ -1,0 +1,243 @@
+fileFormatVersion: 2
+guid: cc1fbd1b9f4ab2c47b0b7637881bfe23
+timeCreated: 1527667423
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: adam_A_animSetup_v014:adam_A_adam_A_root_ctrl_frz_grp
+    100004: adam_A_animSetup_v014:adam_A_rig_grp
+    100006: adam_A_animSetup_v014:adam_A_root_ctrl
+    100008: adam_A_animSetup_v014:adam_A_root_ctrl_zeroFrzGrp
+    100010: adam_A_animSetup_v014:adam_A_Skeleton_grp
+    100012: adam_A_animSetup_v014:xprt_head_a_jnt
+    100014: adam_A_animSetup_v014:xprt_head_b_jnt
+    100016: adam_A_animSetup_v014:xprt_head_c_jnt
+    100018: adam_A_animSetup_v014:xprt_head_d_jnt
+    100020: adam_A_animSetup_v014:xprt_hip_jnt
+    100022: adam_A_animSetup_v014:xprt_jaw_a_jnt
+    100024: adam_A_animSetup_v014:xprt_jaw_b_jnt
+    100026: adam_A_animSetup_v014:xprt_jaw_c_jnt
+    100028: adam_A_animSetup_v014:xprt_lf_ankleWeight_jnt
+    100030: adam_A_animSetup_v014:xprt_lf_ball_jnt
+    100032: adam_A_animSetup_v014:xprt_lf_clavicle_jnt
+    100034: adam_A_animSetup_v014:xprt_lf_elbowWeight_a_jnt
+    100036: adam_A_animSetup_v014:xprt_lf_elbowWeight_jnt
+    100038: adam_A_animSetup_v014:xprt_lf_eye_jnt
+    100040: adam_A_animSetup_v014:xprt_lf_hand_jnt
+    100042: adam_A_animSetup_v014:xprt_lf_index_a_jnt
+    100044: adam_A_animSetup_v014:xprt_lf_index_b_jnt
+    100046: adam_A_animSetup_v014:xprt_lf_index_c_jnt
+    100048: adam_A_animSetup_v014:xprt_lf_index_d_jnt
+    100050: adam_A_animSetup_v014:xprt_lf_kneeWeight_jnt
+    100052: adam_A_animSetup_v014:xprt_lf_middle_a_jnt
+    100054: adam_A_animSetup_v014:xprt_lf_middle_b_jnt
+    100056: adam_A_animSetup_v014:xprt_lf_middle_c_jnt
+    100058: adam_A_animSetup_v014:xprt_lf_middle_d_jnt
+    100060: adam_A_animSetup_v014:xprt_lf_pinky_a_jnt
+    100062: adam_A_animSetup_v014:xprt_lf_pinky_b_jnt
+    100064: adam_A_animSetup_v014:xprt_lf_pinky_c_jnt
+    100066: adam_A_animSetup_v014:xprt_lf_pinky_d_jnt
+    100068: adam_A_animSetup_v014:xprt_lf_pinkyCup_jnt
+    100070: adam_A_animSetup_v014:xprt_lf_thumb_a_jnt
+    100072: adam_A_animSetup_v014:xprt_lf_thumb_b_jnt
+    100074: adam_A_animSetup_v014:xprt_lf_thumb_c_jnt
+    100076: adam_A_animSetup_v014:xprt_lf_thumb_d_jnt
+    100078: adam_A_animSetup_v014:xprt_lf_toe_jnt
+    100080: adam_A_animSetup_v014:xprt_lf_upArmWeight_jnt
+    100082: adam_A_animSetup_v014:xprt_lf_upLegWeight_jnt
+    100084: adam_A_animSetup_v014:xprt_lf_wristWeight_jnt
+    100086: adam_A_animSetup_v014:xprt_neck_jnt
+    100088: adam_A_animSetup_v014:xprt_rt_ankleWeight_jnt
+    100090: adam_A_animSetup_v014:xprt_rt_ball_jnt
+    100092: adam_A_animSetup_v014:xprt_rt_clavicle_jnt
+    100094: adam_A_animSetup_v014:xprt_rt_elbowWeight_a_jnt
+    100096: adam_A_animSetup_v014:xprt_rt_elbowWeight_jnt
+    100098: adam_A_animSetup_v014:xprt_rt_eye_jnt
+    100100: adam_A_animSetup_v014:xprt_rt_hand_jnt
+    100102: adam_A_animSetup_v014:xprt_rt_index_a_jnt
+    100104: adam_A_animSetup_v014:xprt_rt_index_b_jnt
+    100106: adam_A_animSetup_v014:xprt_rt_index_c_jnt
+    100108: adam_A_animSetup_v014:xprt_rt_index_d_jnt
+    100110: adam_A_animSetup_v014:xprt_rt_kneeWeight_jnt
+    100112: adam_A_animSetup_v014:xprt_rt_middle_a_jnt
+    100114: adam_A_animSetup_v014:xprt_rt_middle_b_jnt
+    100116: adam_A_animSetup_v014:xprt_rt_middle_c_jnt
+    100118: adam_A_animSetup_v014:xprt_rt_middle_d_jnt
+    100120: adam_A_animSetup_v014:xprt_rt_pinky_a_jnt
+    100122: adam_A_animSetup_v014:xprt_rt_pinky_b_jnt
+    100124: adam_A_animSetup_v014:xprt_rt_pinky_c_jnt
+    100126: adam_A_animSetup_v014:xprt_rt_pinky_d_jnt
+    100128: adam_A_animSetup_v014:xprt_rt_pinkyCup_jnt
+    100130: adam_A_animSetup_v014:xprt_rt_thumb_a_jnt
+    100132: adam_A_animSetup_v014:xprt_rt_thumb_b_jnt
+    100134: adam_A_animSetup_v014:xprt_rt_thumb_c_jnt
+    100136: adam_A_animSetup_v014:xprt_rt_thumb_d_jnt
+    100138: adam_A_animSetup_v014:xprt_rt_toe_jnt
+    100140: adam_A_animSetup_v014:xprt_rt_upArmWeight_jnt
+    100142: adam_A_animSetup_v014:xprt_rt_upLegWeight_jnt
+    100144: adam_A_animSetup_v014:xprt_rt_wristWeight_jnt
+    100146: adam_A_animSetup_v014:xprt_Skeleton_grp
+    100148: adam_A_animSetup_v014:xprt_spine_end_jnt
+    100150: adam_A_animSetup_v014:xprt_weightSpine_b_jnt
+    100152: adam_A_animSetup_v014:xprt_weightSpine_c_jnt
+    400000: //RootNode
+    400002: adam_A_animSetup_v014:adam_A_adam_A_root_ctrl_frz_grp
+    400004: adam_A_animSetup_v014:adam_A_rig_grp
+    400006: adam_A_animSetup_v014:adam_A_root_ctrl
+    400008: adam_A_animSetup_v014:adam_A_root_ctrl_zeroFrzGrp
+    400010: adam_A_animSetup_v014:adam_A_Skeleton_grp
+    400012: adam_A_animSetup_v014:xprt_head_a_jnt
+    400014: adam_A_animSetup_v014:xprt_head_b_jnt
+    400016: adam_A_animSetup_v014:xprt_head_c_jnt
+    400018: adam_A_animSetup_v014:xprt_head_d_jnt
+    400020: adam_A_animSetup_v014:xprt_hip_jnt
+    400022: adam_A_animSetup_v014:xprt_jaw_a_jnt
+    400024: adam_A_animSetup_v014:xprt_jaw_b_jnt
+    400026: adam_A_animSetup_v014:xprt_jaw_c_jnt
+    400028: adam_A_animSetup_v014:xprt_lf_ankleWeight_jnt
+    400030: adam_A_animSetup_v014:xprt_lf_ball_jnt
+    400032: adam_A_animSetup_v014:xprt_lf_clavicle_jnt
+    400034: adam_A_animSetup_v014:xprt_lf_elbowWeight_a_jnt
+    400036: adam_A_animSetup_v014:xprt_lf_elbowWeight_jnt
+    400038: adam_A_animSetup_v014:xprt_lf_eye_jnt
+    400040: adam_A_animSetup_v014:xprt_lf_hand_jnt
+    400042: adam_A_animSetup_v014:xprt_lf_index_a_jnt
+    400044: adam_A_animSetup_v014:xprt_lf_index_b_jnt
+    400046: adam_A_animSetup_v014:xprt_lf_index_c_jnt
+    400048: adam_A_animSetup_v014:xprt_lf_index_d_jnt
+    400050: adam_A_animSetup_v014:xprt_lf_kneeWeight_jnt
+    400052: adam_A_animSetup_v014:xprt_lf_middle_a_jnt
+    400054: adam_A_animSetup_v014:xprt_lf_middle_b_jnt
+    400056: adam_A_animSetup_v014:xprt_lf_middle_c_jnt
+    400058: adam_A_animSetup_v014:xprt_lf_middle_d_jnt
+    400060: adam_A_animSetup_v014:xprt_lf_pinky_a_jnt
+    400062: adam_A_animSetup_v014:xprt_lf_pinky_b_jnt
+    400064: adam_A_animSetup_v014:xprt_lf_pinky_c_jnt
+    400066: adam_A_animSetup_v014:xprt_lf_pinky_d_jnt
+    400068: adam_A_animSetup_v014:xprt_lf_pinkyCup_jnt
+    400070: adam_A_animSetup_v014:xprt_lf_thumb_a_jnt
+    400072: adam_A_animSetup_v014:xprt_lf_thumb_b_jnt
+    400074: adam_A_animSetup_v014:xprt_lf_thumb_c_jnt
+    400076: adam_A_animSetup_v014:xprt_lf_thumb_d_jnt
+    400078: adam_A_animSetup_v014:xprt_lf_toe_jnt
+    400080: adam_A_animSetup_v014:xprt_lf_upArmWeight_jnt
+    400082: adam_A_animSetup_v014:xprt_lf_upLegWeight_jnt
+    400084: adam_A_animSetup_v014:xprt_lf_wristWeight_jnt
+    400086: adam_A_animSetup_v014:xprt_neck_jnt
+    400088: adam_A_animSetup_v014:xprt_rt_ankleWeight_jnt
+    400090: adam_A_animSetup_v014:xprt_rt_ball_jnt
+    400092: adam_A_animSetup_v014:xprt_rt_clavicle_jnt
+    400094: adam_A_animSetup_v014:xprt_rt_elbowWeight_a_jnt
+    400096: adam_A_animSetup_v014:xprt_rt_elbowWeight_jnt
+    400098: adam_A_animSetup_v014:xprt_rt_eye_jnt
+    400100: adam_A_animSetup_v014:xprt_rt_hand_jnt
+    400102: adam_A_animSetup_v014:xprt_rt_index_a_jnt
+    400104: adam_A_animSetup_v014:xprt_rt_index_b_jnt
+    400106: adam_A_animSetup_v014:xprt_rt_index_c_jnt
+    400108: adam_A_animSetup_v014:xprt_rt_index_d_jnt
+    400110: adam_A_animSetup_v014:xprt_rt_kneeWeight_jnt
+    400112: adam_A_animSetup_v014:xprt_rt_middle_a_jnt
+    400114: adam_A_animSetup_v014:xprt_rt_middle_b_jnt
+    400116: adam_A_animSetup_v014:xprt_rt_middle_c_jnt
+    400118: adam_A_animSetup_v014:xprt_rt_middle_d_jnt
+    400120: adam_A_animSetup_v014:xprt_rt_pinky_a_jnt
+    400122: adam_A_animSetup_v014:xprt_rt_pinky_b_jnt
+    400124: adam_A_animSetup_v014:xprt_rt_pinky_c_jnt
+    400126: adam_A_animSetup_v014:xprt_rt_pinky_d_jnt
+    400128: adam_A_animSetup_v014:xprt_rt_pinkyCup_jnt
+    400130: adam_A_animSetup_v014:xprt_rt_thumb_a_jnt
+    400132: adam_A_animSetup_v014:xprt_rt_thumb_b_jnt
+    400134: adam_A_animSetup_v014:xprt_rt_thumb_c_jnt
+    400136: adam_A_animSetup_v014:xprt_rt_thumb_d_jnt
+    400138: adam_A_animSetup_v014:xprt_rt_toe_jnt
+    400140: adam_A_animSetup_v014:xprt_rt_upArmWeight_jnt
+    400142: adam_A_animSetup_v014:xprt_rt_upLegWeight_jnt
+    400144: adam_A_animSetup_v014:xprt_rt_wristWeight_jnt
+    400146: adam_A_animSetup_v014:xprt_Skeleton_grp
+    400148: adam_A_animSetup_v014:xprt_spine_end_jnt
+    400150: adam_A_animSetup_v014:xprt_weightSpine_b_jnt
+    400152: adam_A_animSetup_v014:xprt_weightSpine_c_jnt
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
