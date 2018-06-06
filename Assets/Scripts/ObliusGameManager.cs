@@ -23,6 +23,8 @@ public class ObliusGameManager : MonoBehaviour
 
     public GameObject VehiclAnimator, CameraContainer;
 
+    public AudioClip gamestartClip, cardropClip;
+
 	void Awake ()
 	{
 		Application.targetFrameRate = 60;
@@ -31,7 +33,7 @@ public class ObliusGameManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-
+       
 	}
 
 	// Update is called once per frame
@@ -110,7 +112,7 @@ public class ObliusGameManager : MonoBehaviour
 
     IEnumerator FadeGame()
     {
-       
+        SoundsManager.instance.Play(gamestartClip);
         GUIManager.instance.FadeBlack.DOFade(1, 0.3f);
         
         VehiclAnimator.transform.DOMoveZ(-20, 0, true);
@@ -128,6 +130,7 @@ public class ObliusGameManager : MonoBehaviour
         GUIManager.instance.FadeBlack.DOFade(0, 0.1f);
         VehiclAnimator.SetActive(false);
         CameraContainer.SetActive(true);
+        SoundsManager.instance.Play(cardropClip);
         StartActualGame();
         
     }

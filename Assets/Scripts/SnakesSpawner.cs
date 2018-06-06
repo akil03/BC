@@ -166,7 +166,10 @@ public class SnakesSpawner : MonoBehaviour
     {
         yield return null;
 
-        GameObject go = PowerupsList[0];
+        int rand = Random.Range(0, PowerupsList.Count);
+
+        GameObject go = PowerupsList[rand];
+
         go = GameObject.Instantiate(go);
 
         Vector3 newPos = new Vector3(Random.Range(1,32),Random.Range(-1,-32),-1);

@@ -17,9 +17,12 @@ public class GUIManager : MonoBehaviour
     public InGameGUI inGameGUI;
 
 
-    public Text PowerText;
+    public Text PowerText,scoreText;
 
     public Image FadeBlack;
+    public Image FrozenVignette;
+
+    public UIPop Smash, ScorePop;
 
     void Awake()
     {
@@ -104,6 +107,8 @@ public class GUIManager : MonoBehaviour
     {
         PowerText.transform.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBack);
     }
+
+    
 
 
 

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114246764952717460}
   - component: {fileID: 114580800233846492}
   - component: {fileID: 50737930154637326}
+  - component: {fileID: 82264633948954944}
   m_Layer: 0
   m_Name: Snake
   m_TagString: Untagged
@@ -323,6 +324,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.0000002, y: 2.0000002}
   m_EdgeRadius: 0
+--- !u!82 &82264633948954944
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1142138716322408}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1adfab037dca6bf4aaddcb05c3b85f57, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!102 &102358239095736972
 TextMesh:
   serializedVersion: 3
@@ -379,6 +460,8 @@ MonoBehaviour:
   tailPiece: {fileID: 21300000, guid: 96d98f4be80e8433199a00517692eaab, type: 3}
   collectedPiece: {fileID: 21300000, guid: 7f9d79e79331746fca45056d6fde9c6a, type: 3}
   snakeColor: {r: 0, g: 0, b: 0, a: 0}
+  Shield: {fileID: 0}
+  Barge: {fileID: 0}
 --- !u!114 &114246764952717460
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -410,6 +493,27 @@ MonoBehaviour:
   snakeNameTextMesh: {fileID: 0}
   name: 
   spriteColor: {r: 0, g: 0, b: 0, a: 0}
+  scoreMultiplier: 1
+  invertControls: 1
+  isShielded: 0
+  destroyParticle: {fileID: 1090289210323326, guid: 8cd0ecb7da37f0c488f51c80d1403d86,
+    type: 2}
+  movementSound: {fileID: 82264633948954944}
+  deadClip: {fileID: 8300000, guid: 3fd89e8bb3b11b14b9e25baaa448701f, type: 3}
+  powerupClip: {fileID: 8300000, guid: facdef26ff121d54a86035b0c16da5a2, type: 3}
+  gemsClip: {fileID: 8300000, guid: 4b602c678b914a447b8416b07661b2e9, type: 3}
+  speedClip: {fileID: 8300000, guid: 1bdca56a889386449899fe990eaef5b6, type: 3}
+  shieldClip: {fileID: 8300000, guid: fc87e41784022e04cb624053ff8f0701, type: 3}
+  scoreClip: {fileID: 8300000, guid: a86229915bae206489e4b83f095164ed, type: 3}
+  blackoutClip: {fileID: 8300000, guid: e29093ffe95ca9248883af8c359b3f93, type: 3}
+  slowClip: {fileID: 8300000, guid: b0d0f6c91bfbb25418930d60daaffb38, type: 3}
+  fillClip: {fileID: 8300000, guid: 1fa3bc5eb41feeb4ea2c542735f8f047, type: 3}
+  speedTime: 4
+  multiplierTime: 10
+  shieldTime: 5
+  timeSlow: 2
+  InvertControlTime: 4
+  BlackOutTime: 2
 --- !u!114 &114532724047530652
 MonoBehaviour:
   m_ObjectHideFlags: 1

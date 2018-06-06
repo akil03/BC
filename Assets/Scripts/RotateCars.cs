@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class RotateCars : MonoBehaviour {
 	public float speed;
-	// Use this for initialization
-	void Start () {
+    public Vector3 direction = Vector3.up;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Rotate(Vector3.up * speed * Time.deltaTime);
-	}
+        transform.Rotate(direction * speed * Time.deltaTime);
+    }
 }
