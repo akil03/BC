@@ -23,6 +23,7 @@ public class GUIManager : MonoBehaviour
     public Image FrozenVignette;
 
     public UIPop Smash, ScorePop;
+    public Camera gameCam;
 
     void Awake()
     {

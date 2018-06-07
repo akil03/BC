@@ -34,6 +34,7 @@ public class Snake : MonoBehaviour
 	public SnakeMeshProprietes snakeMeshProprietes;
 	public Sprite tailPieceSprite;
 	public Sprite collectedPieceSprite;
+    public SpriteRenderer FollowSprite;
 
 	public SnakeNameTextMesh snakeNameTextMesh;
 	public string name;
@@ -79,12 +80,17 @@ public class Snake : MonoBehaviour
 		snakeMeshProprietes.collectedPiece = collectedPieceSprite;
 		snakeMeshProprietes.tailPiece = tailPieceSprite;
 
+       
 
-		snakeMeshProprietes.snakeColor = spriteColor;
 
-		SetName ();
+        snakeMeshProprietes.snakeColor = spriteColor;
+        FollowSprite.color = spriteColor;
+        FollowSprite.DOFade(0.5f, 0);
+
+        SetName ();
         if (!isBot) {
             movementSound.Play();
+            GUIManager.instance.gameCam.fieldOfView = 60;
             GUIManager.instance.scoreText.text = "0";
         }
         
@@ -185,6 +191,7 @@ public class Snake : MonoBehaviour
 	}
     int totalScore = 0;
     int scoreCount;
+    float fov;
 	public void CheckReachedGroundPiece (GroundPiece pieceToCheck)
 	{
 		if (pieceToCheck.collectingSnake != null) {		
@@ -250,8 +257,11 @@ public class Snake : MonoBehaviour
                 if (!isBot)
                 {
                     totalScore += scoreCount;
+                    fov = 60 + (0.02f * ownedGroundPieces.Count);
+                    fov = Mathf.Clamp(fov, 60, 80);
                     GUIManager.instance.ScorePop.OnScore(scoreCount);
                     GUIManager.instance.scoreText.text = totalScore.ToString();
+                    GUIManager.instance.gameCam.DOFieldOfView(fov, 1);
                 }
                     
 
@@ -531,7 +541,8 @@ public class Snake : MonoBehaviour
 			if (GUIManager.instance.mainMenuGUI.playerNameField.text != "") {
 				return GUIManager.instance.mainMenuGUI.playerNameField.text;
 			} else {
-				return "guest" + Random.Range (0, 999999);
+                return "";
+                return "guest" + Random.Range (0, 999999);
 			}
 		}
 
@@ -540,7 +551,8 @@ public class Snake : MonoBehaviour
 
 	public void ActivateRandom()
 	{
-		int rand = Random.Range(0, 7);
+       
+        int rand = Random.Range(0, 7);
 
 		switch (rand)
 		{
@@ -557,7 +569,7 @@ public class Snake : MonoBehaviour
 				ActivateTimeSlow();
 				break;
 			case 4:
-				ActivateShields();
+                OnCameraTilt();
 				break;
 			case 5:
 				ActivateInvertControls();
@@ -632,8 +644,10 @@ public class Snake : MonoBehaviour
             
         
 		isShielded = true;
-		snakeMeshProprietes.Shield.transform.DOScale(new Vector3(1.5f,1.5f,1.5f), 0.3f).SetEase(Ease.OutBack);
-		CancelInvoke("DisableShields");
+		//snakeMeshProprietes.Shield.transform.DOScale(new Vector3(1.5f,1.5f,1.5f), 0.3f).SetEase(Ease.OutBack);
+        snakeMeshProprietes.Shield.SetActive(true);
+
+        CancelInvoke("DisableShields");
 		Invoke("DisableShields", shieldTime);
 
 	}
@@ -641,7 +655,8 @@ public class Snake : MonoBehaviour
 	public void DisableShields()
 	{
 		isShielded = false;
-		snakeMeshProprietes.Shield.transform.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBack);
+        //snakeMeshProprietes.Shield.transform.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBack);
+        snakeMeshProprietes.Shield.SetActive(false);
         GUIManager.instance.HidePowerText();
 
     }
@@ -715,6 +730,25 @@ public class Snake : MonoBehaviour
 	{
 		GUIManager.instance.FadeBlack.DOFade(0, 1.3f);
         GUIManager.instance.HidePowerText();
+    }
+
+
+
+    public void OnCameraTilt()
+    {
+
+        if (isBot)
+            return;
+
+        GUIManager.instance.ShowPowerText("Camera Tilt !!");
+        GUIManager.instance.gameCam.transform.DOLocalRotate(new Vector3(-52, 0, -40), 1f, RotateMode.Fast).OnComplete(() =>
+        {
+            GUIManager.instance.gameCam.transform.DOLocalRotate(new Vector3(-52, 0, 40), 2f, RotateMode.Fast).OnComplete(() =>
+            {
+                GUIManager.instance.gameCam.transform.DOLocalRotate(new Vector3(-52, 0, 0), 1f, RotateMode.Fast);
+                GUIManager.instance.HidePowerText();
+            });
+        });
     }
 
 }

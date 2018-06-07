@@ -3,11 +3,12 @@ using System.Collections;
 using DG.Tweening;
 public class ObliusGameManager : MonoBehaviour
 {
-
-	public static ObliusGameManager instance;
+    public Color[] floorColour, skyColour;
+    public int startColor, currentColor;
+    public static ObliusGameManager instance;
 
 	public int percentageCharLimit = 4;
-
+    public SpriteRenderer floor;
 	public enum GameState
 	{
 		menu,
@@ -59,6 +60,9 @@ public class ObliusGameManager : MonoBehaviour
 	}
 
 
+
+
+
 	public void GameOver (float delay)
 	{
 		StartCoroutine (GameOverCoroutine (delay));
@@ -88,6 +92,19 @@ public class ObliusGameManager : MonoBehaviour
 
 	}
 
+
+    public void SwitchColors()
+    {
+        floor.DOColor(floorColour[currentColor], 1);
+        GUIManager.instance.gameCam.DOColor(floorColour[currentColor], 1);
+        currentColor++;
+        if (currentColor > floorColour.Length - 1)
+            currentColor = 0;
+
+        Invoke("SwitchColors",8);
+
+    }
+
     public void StartActualGame()
     {
         ResetGame();
@@ -105,7 +122,9 @@ public class ObliusGameManager : MonoBehaviour
 
         gameState = GameState.game;
 
-
+        currentColor = startColor;
+        CancelInvoke();
+        SwitchColors();
 
     }
 

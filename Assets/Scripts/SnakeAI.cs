@@ -59,12 +59,11 @@ public class SnakeAI : MonoBehaviour
             if (targetEnemySnakeToKill == null || targetEnemySnakeTailGroundPiece == null)
             { //added fix
                 print("bug foix");
-                snake.KillSnake(snake);
-                return;
+                isGoingToKillEnemySnake = false;
+                //snake.KillSnake(snake);
+               // return;
             }
-
-
-			if (targetEnemySnakeToKill != targetEnemySnakeTailGroundPiece.collectingSnake || targetEnemySnakeToKill == null) {
+            else if (targetEnemySnakeToKill != targetEnemySnakeTailGroundPiece.collectingSnake || targetEnemySnakeToKill == null) {
 				isGoingToKillEnemySnake = false;
 				targetEnemySnakeToKill = null;
 				targetEnemySnakeTailGroundPiece = null;
