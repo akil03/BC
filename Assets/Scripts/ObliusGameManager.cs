@@ -51,7 +51,7 @@ public class ObliusGameManager : MonoBehaviour
 		//AdNetworks.instance.HideBanner ();
 		gameState = GameState.gameover;
 
-		Leaderboard.instance.reportScore (ScoreHandler.instance.score);
+	//	Leaderboard.instance.reportScore (ScoreHandler.instance.score);
 		GUIManager.instance.ShowGameOverGUI ();
 		InGameGUI.instance.gameObject.SetActive (false);
 		//AdNetworks.instance.ShowInterstitial ();

@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: ad43e53bbec40934bb69a68baf9f5ba6
+timeCreated: 1528456474
+licenseType: Pro
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Basic
+  fontNames:
+  - Basic
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 63ca15c6aa005c3408379b8896cd65f6, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

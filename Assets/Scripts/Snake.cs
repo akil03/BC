@@ -262,6 +262,7 @@ public class Snake : MonoBehaviour
                     GUIManager.instance.ScorePop.OnScore(scoreCount);
                     GUIManager.instance.scoreText.text = totalScore.ToString();
                     GUIManager.instance.gameCam.DOFieldOfView(fov, 1);
+                    ScoreHandler.instance.SetScore(totalScore);
                 }
                     
 
