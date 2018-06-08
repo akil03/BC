@@ -248,8 +248,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/ElectronicDreaming/Projects/BC_Git/user.keystore
-  AndroidKeyaliasName: battle cars
+  AndroidKeystoreName: 
+  AndroidKeyaliasName: 
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   AndroidEnableTango: 0
