@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.SocialPlatforms.GameCenter;
 #if UNITY_ANDROID
-using GooglePlayGames;
+//using GooglePlayGames;
 #endif
 using UnityEngine.SocialPlatforms;
 //using UnityEngine.SocialPlatforms.GameCenter;
@@ -79,7 +79,7 @@ public class Leaderboard : MonoBehaviour
    public void showLeaderboard()
     {
 #if UNITY_ANDROID
-        PlayGamesPlatform.Instance.ShowLeaderboardUI(leaderboardIdToUse);
+     //   PlayGamesPlatform.Instance.ShowLeaderboardUI(leaderboardIdToUse);
 #endif
 
 #if UNITY_IOS
@@ -90,7 +90,7 @@ public class Leaderboard : MonoBehaviour
     void initialize()
     {
 #if UNITY_ANDROID
-        PlayGamesPlatform.Activate();
+       // PlayGamesPlatform.Activate();
         leaderboardIdToUse = googlePlayLeaderboardID;
 #endif
 
