@@ -60,14 +60,14 @@ public class GameOverGUI : MonoBehaviour {
     {
         SoundsManager.instance.PlayMenuButtonSound();
 
-        AdRemover.instance.BuyNonConsumable();
+//        AdRemover.instance.BuyNonConsumable();
     }
 
     public void OnRestorePurchaseButtonClick()
     {
         SoundsManager.instance.PlayMenuButtonSound();
 
-        AdRemover.instance.RestorePurchases();
+      //  AdRemover.instance.RestorePurchases();
     }
 
     public void OnLeaderboardButtonClick()
@@ -81,7 +81,7 @@ public class GameOverGUI : MonoBehaviour {
     {
         SoundsManager.instance.PlayMenuButtonSound();
 
-        ShareManager.instance.share();
+     //   ShareManager.instance.share();
     }
 
     public void OnPlayButtonClick()

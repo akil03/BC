@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SocialPlatforms.GameCenter;
 #if UNITY_ANDROID
 using GooglePlayGames;
 #endif
