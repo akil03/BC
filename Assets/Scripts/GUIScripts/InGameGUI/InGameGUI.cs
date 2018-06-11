@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
+using DG.Tweening;
 public class InGameGUI : MonoBehaviour
 {
 
@@ -10,7 +10,7 @@ public class InGameGUI : MonoBehaviour
     public Text specialPointsText;
 	public Text highscoreText;
 	public Image specialPointsImage;
-    
+    public Transform fillTransform;
 
 	public GameObject takenGUIDiamond;
 
@@ -18,6 +18,7 @@ public class InGameGUI : MonoBehaviour
     void Awake()
     {
         instance = this;
+        
     }
 
     // Use this for initialization
@@ -34,10 +35,27 @@ public class InGameGUI : MonoBehaviour
 		UpdateHighScoreText();
     }
 
+    float currentFillScale;
 	public void UpdateScoreText(){
-		string scoreString = ObliusGameManager.instance.TrimPercentage (((100 * (float)ScoreHandler.instance.score) / (float)GroundSpawner.instance.spawnedGroundPieces.Count).ToString ());
-		scoreText.text = "" + scoreString +  "%";
-	}
+        float coveredArea = 100*(float)SnakesSpawner.instance.playerSnake.ownedGroundPieces.Count / (float)GroundSpawner.instance.spawnedGroundPieces.Count;
+
+        float fillScale = coveredArea / ObliusGameManager.instance.LevelTargets[ObliusGameManager.instance.currentLevel];
+
+        if (currentFillScale != fillScale)
+        {
+            currentFillScale = fillScale;
+
+            fillTransform.DOScaleX(currentFillScale, 0.5f);
+
+            if (currentFillScale > 1)
+                ObliusGameManager.instance.SwitchColors();
+        }
+
+        string scoreString = coveredArea.ToString("0.00");
+
+        scoreText.text = scoreString +  " / "+ObliusGameManager.instance.LevelTargets[ObliusGameManager.instance.currentLevel] + " %";
+        
+    }
 
 	public void UpdateSpecialPointsText(){
 		specialPointsText.text = ScoreHandler.instance.specialPoints.ToString();

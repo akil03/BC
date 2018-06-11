@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 using DG.Tweening;
 public class ObliusGameManager : MonoBehaviour
 {
-    public Color[] floorColour, skyColour;
-    public int startColor, currentColor;
-    public static ObliusGameManager instance;
+	public Color[] floorColour, skyColour;
+    public int[] LevelTargets;
+    public Image fillImage;
+	public int startLevel, currentLevel;
+	public static ObliusGameManager instance;
 
 	public int percentageCharLimit = 4;
-    public SpriteRenderer floor;
+	public SpriteRenderer floor;
 	public enum GameState
 	{
 		menu,
@@ -22,9 +25,9 @@ public class ObliusGameManager : MonoBehaviour
 	public bool oneMoreChanceUsed = false;
 
 
-    public GameObject VehiclAnimator, CameraContainer;
+	public GameObject VehiclAnimator, CameraContainer;
 
-    public AudioClip gamestartClip, cardropClip;
+	public AudioClip gamestartClip, cardropClip;
 
 	void Awake ()
 	{
@@ -34,7 +37,7 @@ public class ObliusGameManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-       
+	   
 	}
 
 	// Update is called once per frame
@@ -70,21 +73,21 @@ public class ObliusGameManager : MonoBehaviour
 
 	public void StartGame ()
 	{
-        StartCoroutine(FadeGame());
-        return;
+		StartCoroutine(FadeGame());
+		return;
 
 		ResetGame ();
 		ScoreHandler.instance.incrementNumberOfGames ();
 		GUIManager.instance.ShowInGameGUI ();
-        //GUIManager.instance.tutorialGUI.ShowIfNeverAppeared();
-        //AdNetworks.instance.ShowBanner ();
+		//GUIManager.instance.tutorialGUI.ShowIfNeverAppeared();
+		//AdNetworks.instance.ShowBanner ();
 
 
-        //GroundSpawner.instance.ClearGround();
-        //SnakesSpawner.instance.KillAllSnakes();
+		//GroundSpawner.instance.ClearGround();
+		//SnakesSpawner.instance.KillAllSnakes();
 
 		SnakesSpawner.instance.SpawnPlayer ();
-        //SnakesSpawner.instance.SpawnEnemies();
+		//SnakesSpawner.instance.SpawnEnemies();
 
 		gameState = GameState.game;
 
@@ -93,66 +96,72 @@ public class ObliusGameManager : MonoBehaviour
 	}
 
 
-    public void SwitchColors()
-    {
-        floor.DOColor(floorColour[currentColor], 1);
-        GUIManager.instance.gameCam.DOColor(floorColour[currentColor], 1);
-        currentColor++;
-        if (currentColor > floorColour.Length - 1)
-            currentColor = 0;
+	public void SwitchColors()
+	{
+        currentLevel++;
+        if (currentLevel > floorColour.Length - 1)
+            currentLevel = 0;
 
-        Invoke("SwitchColors",8);
+        fillImage.DOColor(floorColour[currentLevel], 1f);
+        floor.DOColor(floorColour[currentLevel], 1);
+		GUIManager.instance.gameCam.DOColor(floorColour[currentLevel], 1);
+        
 
-    }
+		//Invoke("SwitchColors",8);
 
-    public void StartActualGame()
-    {
-        ResetGame();
-        ScoreHandler.instance.incrementNumberOfGames();
-        GUIManager.instance.ShowInGameGUI();
-        //GUIManager.instance.tutorialGUI.ShowIfNeverAppeared();
-        //AdNetworks.instance.ShowBanner ();
+	}
+
+	public void StartActualGame()
+	{
+		ResetGame();
+		ScoreHandler.instance.incrementNumberOfGames();
+		GUIManager.instance.ShowInGameGUI();
+		//GUIManager.instance.tutorialGUI.ShowIfNeverAppeared();
+		//AdNetworks.instance.ShowBanner ();
 
 
-        //GroundSpawner.instance.ClearGround();
-        //SnakesSpawner.instance.KillAllSnakes();
+		//GroundSpawner.instance.ClearGround();
+		//SnakesSpawner.instance.KillAllSnakes();
 
-        SnakesSpawner.instance.SpawnPlayer();
-        //SnakesSpawner.instance.SpawnEnemies();
+		SnakesSpawner.instance.SpawnPlayer();
+		//SnakesSpawner.instance.SpawnEnemies();
 
-        gameState = GameState.game;
+		gameState = GameState.game;
 
-        currentColor = startColor;
+        
+
+	}
+
+
+	IEnumerator FadeGame()
+	{
+
+        currentLevel = startLevel;
         CancelInvoke();
         SwitchColors();
 
-    }
-
-
-    IEnumerator FadeGame()
-    {
         SoundsManager.instance.Play(gamestartClip);
-        GUIManager.instance.FadeBlack.DOFade(1, 0.3f);
-        
-        VehiclAnimator.transform.DOMoveZ(-20, 0, true);
-        yield return new WaitForSeconds(0.3f);
+		GUIManager.instance.FadeBlack.DOFade(1, 0.3f);
+		
+		VehiclAnimator.transform.DOMoveZ(-20, 0, true);
+		yield return new WaitForSeconds(0.3f);
 
-        GUIManager.instance.mainMenuGUI.gameObject.SetActive(false);
-        CameraContainer.SetActive(false);
-        VehiclAnimator.SetActive(true);
-        VehiclAnimator.transform.DOMoveZ(-10, 5, false);
+		GUIManager.instance.mainMenuGUI.gameObject.SetActive(false);
+		CameraContainer.SetActive(false);
+		VehiclAnimator.SetActive(true);
+		VehiclAnimator.transform.DOMoveZ(-10, 5, false);
 
-        GUIManager.instance.FadeBlack.DOFade(0, 1.3f);
-        yield return new WaitForSeconds(2.5f);
-        GUIManager.instance.FadeBlack.DOFade(1, 1f);
-        yield return new WaitForSeconds(1.3f);
-        GUIManager.instance.FadeBlack.DOFade(0, 0.1f);
-        VehiclAnimator.SetActive(false);
-        CameraContainer.SetActive(true);
-        SoundsManager.instance.Play(cardropClip);
-        StartActualGame();
-        
-    }
+		GUIManager.instance.FadeBlack.DOFade(0, 1.3f);
+		yield return new WaitForSeconds(2.5f);
+		GUIManager.instance.FadeBlack.DOFade(1, 1f);
+		yield return new WaitForSeconds(1.3f);
+		GUIManager.instance.FadeBlack.DOFade(0, 0.1f);
+		VehiclAnimator.SetActive(false);
+		CameraContainer.SetActive(true);
+		SoundsManager.instance.Play(cardropClip);
+		StartActualGame();
+		
+	}
 
 
 	public void ResetGame (bool resetScore = true, bool resetOneMoreChance = true)

@@ -598,7 +598,8 @@ public class Snake : MonoBehaviour
             
 
         speed = 12;
-		Invoke("DisableSpeed", speedTime);
+        CancelInvoke("DisableSpeed");
+        Invoke("DisableSpeed", speedTime);
 
 	}
 
@@ -621,7 +622,8 @@ public class Snake : MonoBehaviour
         GUIManager.instance.ShowPowerText("2x Score Multiplier !!");
                 
 		scoreMultiplier = scoreMultiplier * 2;
-		Invoke("DisableMultiplier", multiplierTime);
+        CancelInvoke("DisableMultiplier");
+        Invoke("DisableMultiplier", multiplierTime);
 
 	}
 
@@ -674,6 +676,7 @@ public class Snake : MonoBehaviour
         GUIManager.instance.ShowPowerText("Time freeze !!");
 
         Time.timeScale = 0.5f;
+        speed = speed*2;
         GUIManager.instance.FrozenVignette.DOFade(1, 0.7f);
 		CancelInvoke("DisableTimeSlow");
 		Invoke("DisableTimeSlow", timeSlow);
@@ -683,6 +686,7 @@ public class Snake : MonoBehaviour
 	public void DisableTimeSlow()
 	{
 		Time.timeScale = 1f;
+        speed = speed / 2;
         GUIManager.instance.HidePowerText();
         GUIManager.instance.FrozenVignette.DOFade(0, 0.6f);
     }
