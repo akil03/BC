@@ -34,7 +34,7 @@ public class Snake : MonoBehaviour
 	public SnakeMeshProprietes snakeMeshProprietes;
 	public Sprite tailPieceSprite;
 	public Sprite collectedPieceSprite;
-    public SpriteRenderer FollowSprite;
+	public SpriteRenderer FollowSprite;
 
 	public SnakeNameTextMesh snakeNameTextMesh;
 	public string name;
@@ -44,11 +44,11 @@ public class Snake : MonoBehaviour
 	public int invertControls = 1;
 	public bool isShielded;
 
-    public GameObject destroyParticle;
+	public GameObject destroyParticle;
 
-    public AudioSource movementSound;
+	public AudioSource movementSound;
 
-    public AudioClip deadClip, powerupClip, gemsClip, speedClip, shieldClip, scoreClip, blackoutClip, slowClip, fillClip;
+	public AudioClip deadClip, powerupClip, gemsClip, speedClip, shieldClip, scoreClip, blackoutClip, slowClip, fillClip;
 
 	void Awake ()
 	{
@@ -57,7 +57,7 @@ public class Snake : MonoBehaviour
 		snakeMeshContainer = GetComponentInChildren<SnakeMeshContainer> ();
 		ownedGroundPieces = new List<GroundPiece> ();
 
-        		
+				
 	}
 
 
@@ -80,20 +80,20 @@ public class Snake : MonoBehaviour
 		snakeMeshProprietes.collectedPiece = collectedPieceSprite;
 		snakeMeshProprietes.tailPiece = tailPieceSprite;
 
-       
+	   
 
 
-        snakeMeshProprietes.snakeColor = spriteColor;
-        FollowSprite.color = spriteColor;
-        FollowSprite.DOFade(0.5f, 0);
+		snakeMeshProprietes.snakeColor = spriteColor;
+		FollowSprite.color = spriteColor;
+		FollowSprite.DOFade(0.5f, 0);
 
-        SetName ();
-        if (!isBot) {
-            movementSound.Play();
-            GUIManager.instance.gameCam.fieldOfView = 60;
-            GUIManager.instance.scoreText.text = "0";
-        }
-        
+		SetName ();
+		if (!isBot) {
+			movementSound.Play();
+			GUIManager.instance.gameCam.fieldOfView = 60;
+			GUIManager.instance.scoreText.text = "0";
+		}
+		
 	}
 	
 	// Update is called once per frame
@@ -189,9 +189,9 @@ public class Snake : MonoBehaviour
 			yield return new WaitForEndOfFrame ();
 		}
 	}
-    int totalScore = 0;
-    int scoreCount;
-    float fov;
+	int totalScore = 0;
+	int scoreCount;
+	float fov;
 	public void CheckReachedGroundPiece (GroundPiece pieceToCheck)
 	{
 		if (pieceToCheck.collectingSnake != null) {		
@@ -231,11 +231,11 @@ public class Snake : MonoBehaviour
 
 				Poly.FloodFill (groundPiecesToCheck [0], 1, 2);
 
-                if(!isBot)
-                    SoundsManager.instance.Play(fillClip);
-                
+				if(!isBot)
+					SoundsManager.instance.Play(fillClip);
+				
 
-                foreach (GroundPiece piece in groundPiecesToCheck) {
+				foreach (GroundPiece piece in groundPiecesToCheck) {
 
 					if (piece.ownerIDForCheck == 1) {
 						newOwnedGroundPieces.Add (piece);
@@ -244,29 +244,29 @@ public class Snake : MonoBehaviour
 
 					piece.tempHasToBeChecked = false;
 				}
-                scoreCount = 0;
+				scoreCount = 0;
 
-                foreach (GroundPiece piece in newOwnedGroundPieces) {
+				foreach (GroundPiece piece in newOwnedGroundPieces) {
 					piece.pieceWhenCollected.sr.color = spriteColor;
 					piece.ShowCollectedPiece (collectedPieceSprite);
-                    scoreCount++;
+					scoreCount++;
 
-                }
-                scoreCount *= 50*scoreMultiplier;
+				}
+				scoreCount *= 50*scoreMultiplier;
 
-                if (!isBot)
-                {
-                    totalScore += scoreCount;
-                    fov = 60 + (0.02f * ownedGroundPieces.Count);
-                    fov = Mathf.Clamp(fov, 60, 80);
-                    GUIManager.instance.ScorePop.OnScore(scoreCount);
-                    GUIManager.instance.scoreText.text = totalScore.ToString();
-                    GUIManager.instance.gameCam.DOFieldOfView(fov, 1);
-                    ScoreHandler.instance.SetScore(totalScore);
-                }
-                    
+				if (!isBot)
+				{
+					totalScore += scoreCount;
+					fov = 60 + (0.02f * ownedGroundPieces.Count);
+					fov = Mathf.Clamp(fov, 60, 80);
+					GUIManager.instance.ScorePop.OnScore(scoreCount);
+					GUIManager.instance.scoreText.text = totalScore.ToString();
+					GUIManager.instance.gameCam.DOFieldOfView(fov, 1);
+					ScoreHandler.instance.SetScore(totalScore);
+				}
+					
 
-                if (!isBot) {
+				if (!isBot) {
 					ScoreHandler.instance.SetScore (ownedGroundPieces.Count);
 				}
 
@@ -363,45 +363,45 @@ public class Snake : MonoBehaviour
 	}
 
 
-    public Snake lastKill;
+	public Snake lastKill;
 	public void KillSnake (Snake targetSnake)
 	{
-        if(!targetSnake.isShielded)
-           targetSnake.haveToDie = true;
+		if(!targetSnake.isShielded)
+		   targetSnake.haveToDie = true;
 
 
-        if (!isBot&&targetSnake!=this){
-            if (lastKill != null)
-                return;
+		if (!isBot&&targetSnake!=this){
+			if (lastKill != null)
+				return;
 
-            lastKill = targetSnake;
-            
-            GUIManager.instance.ScorePop.OnTextSmash();
-            SoundsManager.instance.Play(deadClip);
-            Handheld.Vibrate();
-        }
+			lastKill = targetSnake;
+			
+			GUIManager.instance.ScorePop.OnTextSmash();
+			SoundsManager.instance.Play(deadClip);
+			Handheld.Vibrate();
+		}
 	}
 
 
 	public IEnumerator Die ()
 	{
 
-        //if (isShielded)
-        //    yield break;
+		//if (isShielded)
+		//    yield break;
 
 
 		if (!isBot)
 		{
 			DisableBlackOut();
 			DisableTimeSlow();
-            GUIManager.instance.HidePowerText();
-            SoundsManager.instance.Play(deadClip);
-            Handheld.Vibrate();
-        }
+			GUIManager.instance.HidePowerText();
+			SoundsManager.instance.Play(deadClip);
+			Handheld.Vibrate();
+		}
 
-        Instantiate(destroyParticle, transform);
+		Instantiate(destroyParticle, transform);
 
-        yield return  StartCoroutine (FadeOutTailPieces ());	
+		yield return  StartCoroutine (FadeOutTailPieces ());	
 		yield return StartCoroutine (FadeOutCollectedGroundPieces ());
 
 		foreach (GroundPiece piece in ownedGroundPieces) {
@@ -457,57 +457,57 @@ public class Snake : MonoBehaviour
 			if (!isBot) {	
 				GUIManager.instance.inGameGUI.InstantiateTakeGUIDiamond (Camera.main.WorldToScreenPoint (coll.gameObject.transform.position));		
 				ScoreHandler.instance.increaseSpecialPoints (1);
-                SoundsManager.instance.Play(gemsClip);
-            }
+				SoundsManager.instance.Play(gemsClip);
+			}
 				Destroy (coll.gameObject);
 
 		}
 
-        if (coll.tag == "Enemy")
-        {
-            if(!isShielded)
-                StartCoroutine(Die());
-            
+		if (coll.tag == "Enemy")
+		{
+			if(!isShielded)
+				StartCoroutine(Die());
+			
 
-        }
+		}
 
 
-        if (coll.tag == "Random")
-        {
-            Destroy(coll.gameObject);
-            SnakesSpawner.instance.spawnedPowerCount--;
-            ActivateRandom();
-        }
+		if (coll.tag == "Random")
+		{
+			Destroy(coll.gameObject);
+			SnakesSpawner.instance.spawnedPowerCount--;
+			ActivateRandom();
+		}
 
-        if (coll.tag == "Speed")
-        {
-            Destroy(coll.gameObject);
-            SnakesSpawner.instance.spawnedPowerCount--;
-            ActivateSpeed();
-        }
+		if (coll.tag == "Speed")
+		{
+			Destroy(coll.gameObject);
+			SnakesSpawner.instance.spawnedPowerCount--;
+			ActivateSpeed();
+		}
 
-        if (coll.tag == "Shield")
-        {
-            Destroy(coll.gameObject);
-            SnakesSpawner.instance.spawnedPowerCount--;
-            ActivateShields();
-        }
+		if (coll.tag == "Shield")
+		{
+			Destroy(coll.gameObject);
+			SnakesSpawner.instance.spawnedPowerCount--;
+			ActivateShields();
+		}
 
-        if (coll.tag == "Score")
-        {
-            Destroy(coll.gameObject);
-            SnakesSpawner.instance.spawnedPowerCount--;
-            ActivateMultiplier();
-        }
+		if (coll.tag == "Score")
+		{
+			Destroy(coll.gameObject);
+			SnakesSpawner.instance.spawnedPowerCount--;
+			ActivateMultiplier();
+		}
 
-        if (coll.tag == "Slow")
-        {
-            Destroy(coll.gameObject);
-            SnakesSpawner.instance.spawnedPowerCount--;
-            ActivateTimeSlow();
-        }
+		if (coll.tag == "Slow")
+		{
+			Destroy(coll.gameObject);
+			SnakesSpawner.instance.spawnedPowerCount--;
+			ActivateTimeSlow();
+		}
 
-    }
+	}
 
 	public void SpawnDiamonds(){
 
@@ -542,8 +542,8 @@ public class Snake : MonoBehaviour
 			if (GUIManager.instance.mainMenuGUI.playerNameField.text != "") {
 				return GUIManager.instance.mainMenuGUI.playerNameField.text;
 			} else {
-                return "";
-                return "guest" + Random.Range (0, 999999);
+				return "";
+				return "guest" + Random.Range (0, 999999);
 			}
 		}
 
@@ -552,8 +552,8 @@ public class Snake : MonoBehaviour
 
 	public void ActivateRandom()
 	{
-       
-        int rand = Random.Range(0, 7);
+	   
+		int rand = Random.Range(0, 7);
 
 		switch (rand)
 		{
@@ -570,7 +570,7 @@ public class Snake : MonoBehaviour
 				ActivateTimeSlow();
 				break;
 			case 4:
-                OnCameraTilt();
+				OnCameraTilt();
 				break;
 			case 5:
 				ActivateInvertControls();
@@ -589,24 +589,24 @@ public class Snake : MonoBehaviour
 	public void ActivateSpeed()
 	{
 
-        if (!isBot)
-        {
-            GUIManager.instance.ShowPowerText("Accelerate !!");
-            SoundsManager.instance.Play(powerupClip);
-            SoundsManager.instance.Play(speedClip);
-        }
-            
+		if (!isBot)
+		{
+			GUIManager.instance.ShowPowerText("Accelerate !!");
+			SoundsManager.instance.Play(powerupClip);
+			SoundsManager.instance.Play(speedClip);
+		}
+			
 
-        speed = 12;
-        CancelInvoke("DisableSpeed");
-        Invoke("DisableSpeed", speedTime);
+		speed = 12;
+		CancelInvoke("DisableSpeed");
+		Invoke("DisableSpeed", speedTime);
 
 	}
 
 	public void DisableSpeed()
 	{
-        speed = 4.5f;
-        GUIManager.instance.HidePowerText();
+		speed = 4.5f;
+		GUIManager.instance.HidePowerText();
 	}
 
 
@@ -616,41 +616,41 @@ public class Snake : MonoBehaviour
 		if (isBot)
 			return;
 
-        SoundsManager.instance.Play(powerupClip);
-        SoundsManager.instance.Play(scoreClip);
+		SoundsManager.instance.Play(powerupClip);
+		SoundsManager.instance.Play(scoreClip);
 
-        GUIManager.instance.ShowPowerText("2x Score Multiplier !!");
-                
+		GUIManager.instance.ShowPowerText("2x Score Multiplier !!");
+				
 		scoreMultiplier = scoreMultiplier * 2;
-        CancelInvoke("DisableMultiplier");
-        Invoke("DisableMultiplier", multiplierTime);
+		CancelInvoke("DisableMultiplier");
+		Invoke("DisableMultiplier", multiplierTime);
 
 	}
 
 	public void DisableMultiplier()
 	{
-        scoreMultiplier = scoreMultiplier / 2;
-        GUIManager.instance.HidePowerText();
-    }
+		scoreMultiplier = scoreMultiplier / 2;
+		GUIManager.instance.HidePowerText();
+	}
 
 
 
 	public int shieldTime = 5;
 	public void ActivateShields()
 	{
-        if (!isBot)
-        {
-            SoundsManager.instance.Play(powerupClip);
-            SoundsManager.instance.Play(shieldClip);
-            GUIManager.instance.ShowPowerText("Shields !!");
-        }
-            
-        
+		if (!isBot)
+		{
+			SoundsManager.instance.Play(powerupClip);
+			SoundsManager.instance.Play(shieldClip);
+			GUIManager.instance.ShowPowerText("Shields !!");
+		}
+			
+		
 		isShielded = true;
 		//snakeMeshProprietes.Shield.transform.DOScale(new Vector3(1.5f,1.5f,1.5f), 0.3f).SetEase(Ease.OutBack);
-        snakeMeshProprietes.Shield.SetActive(true);
+		snakeMeshProprietes.Shield.SetActive(true);
 
-        CancelInvoke("DisableShields");
+		CancelInvoke("DisableShields");
 		Invoke("DisableShields", shieldTime);
 
 	}
@@ -658,11 +658,11 @@ public class Snake : MonoBehaviour
 	public void DisableShields()
 	{
 		isShielded = false;
-        //snakeMeshProprietes.Shield.transform.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBack);
-        snakeMeshProprietes.Shield.SetActive(false);
-        GUIManager.instance.HidePowerText();
+		//snakeMeshProprietes.Shield.transform.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBack);
+		snakeMeshProprietes.Shield.SetActive(false);
+		GUIManager.instance.HidePowerText();
 
-    }
+	}
 
 	public int timeSlow = 2;
 	public void ActivateTimeSlow()
@@ -670,14 +670,14 @@ public class Snake : MonoBehaviour
 		if (isBot)
 			return;
 
-        SoundsManager.instance.Play(powerupClip);
-        SoundsManager.instance.Play(slowClip);
+		SoundsManager.instance.Play(powerupClip);
+		SoundsManager.instance.Play(slowClip);
 
-        GUIManager.instance.ShowPowerText("Time freeze !!");
+		GUIManager.instance.ShowPowerText("Time freeze !!");
 
-        Time.timeScale = 0.5f;
-        speed = speed*2;
-        GUIManager.instance.FrozenVignette.DOFade(1, 0.7f);
+		Time.timeScale = 0.5f;
+		speed = speed*2;
+		GUIManager.instance.FrozenVignette.DOFade(1, 0.7f);
 		CancelInvoke("DisableTimeSlow");
 		Invoke("DisableTimeSlow", timeSlow);
 
@@ -686,10 +686,10 @@ public class Snake : MonoBehaviour
 	public void DisableTimeSlow()
 	{
 		Time.timeScale = 1f;
-        speed = speed / 2;
-        GUIManager.instance.HidePowerText();
-        GUIManager.instance.FrozenVignette.DOFade(0, 0.6f);
-    }
+		speed = speed / 2;
+		GUIManager.instance.HidePowerText();
+		GUIManager.instance.FrozenVignette.DOFade(0, 0.6f);
+	}
 
 
 
@@ -700,8 +700,8 @@ public class Snake : MonoBehaviour
 			return;
 
 
-        GUIManager.instance.ShowPowerText("Invert controls !!");
-        invertControls = -1;
+		GUIManager.instance.ShowPowerText("Invert controls !!");
+		invertControls = -1;
 		CancelInvoke("DisableInvertControls");
 		Invoke("DisableInvertControls", InvertControlTime);
 
@@ -710,8 +710,8 @@ public class Snake : MonoBehaviour
 	public void DisableInvertControls()
 	{
 		invertControls = 1;
-        GUIManager.instance.HidePowerText();
-    }
+		GUIManager.instance.HidePowerText();
+	}
 
    
 	public int BlackOutTime = 2;
@@ -721,11 +721,11 @@ public class Snake : MonoBehaviour
 			return;
 
 
-        SoundsManager.instance.Play(powerupClip);
-        SoundsManager.instance.Play(blackoutClip);
+		SoundsManager.instance.Play(powerupClip);
+		SoundsManager.instance.Play(blackoutClip);
 
-        GUIManager.instance.ShowPowerText("Black out !!");
-        GUIManager.instance.FadeBlack.DOFade(1, 0.3f);
+		GUIManager.instance.ShowPowerText("Black out !!");
+		GUIManager.instance.FadeBlack.DOFade(1, 0.3f);
 		CancelInvoke("DisableBlackOut");
 		Invoke("DisableBlackOut", BlackOutTime);
 
@@ -734,26 +734,26 @@ public class Snake : MonoBehaviour
 	public void DisableBlackOut()
 	{
 		GUIManager.instance.FadeBlack.DOFade(0, 1.3f);
-        GUIManager.instance.HidePowerText();
-    }
+		GUIManager.instance.HidePowerText();
+	}
 
 
 
-    public void OnCameraTilt()
-    {
+	public void OnCameraTilt()
+	{
 
-        if (isBot)
-            return;
+		if (isBot)
+			return;
 
-        GUIManager.instance.ShowPowerText("Camera Tilt !!");
-        GUIManager.instance.gameCam.transform.DOLocalRotate(new Vector3(-52, 0, -40), 1f, RotateMode.Fast).OnComplete(() =>
-        {
-            GUIManager.instance.gameCam.transform.DOLocalRotate(new Vector3(-52, 0, 40), 2f, RotateMode.Fast).OnComplete(() =>
-            {
-                GUIManager.instance.gameCam.transform.DOLocalRotate(new Vector3(-52, 0, 0), 1f, RotateMode.Fast);
-                GUIManager.instance.HidePowerText();
-            });
-        });
-    }
+		GUIManager.instance.ShowPowerText("Camera Tilt !!");
+		GUIManager.instance.gameCam.transform.DOLocalRotate(new Vector3(-52, 0, -40), 1f, RotateMode.Fast).OnComplete(() =>
+		{
+			GUIManager.instance.gameCam.transform.DOLocalRotate(new Vector3(-52, 0, 40), 2f, RotateMode.Fast).OnComplete(() =>
+			{
+				GUIManager.instance.gameCam.transform.DOLocalRotate(new Vector3(-52, 0, 0), 1f, RotateMode.Fast);
+				GUIManager.instance.HidePowerText();
+			});
+		});
+	}
 
 }
