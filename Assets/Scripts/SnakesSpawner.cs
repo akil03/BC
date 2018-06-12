@@ -210,7 +210,8 @@ public class SnakesSpawner : MonoBehaviour
 
 	public void GetNotifiedSnakeDeath (Snake snake)
 	{
-		usableSnakeMeshes.Add (snake.snakeMeshContainer.snakeMesh);
+        if(snake.isBot)
+		    usableSnakeMeshes.Add (snake.snakeMeshContainer.snakeMesh);
 
         usableColors.Add(snake.spriteColor);
 

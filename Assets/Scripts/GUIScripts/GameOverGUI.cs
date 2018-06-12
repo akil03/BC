@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using DG.Tweening;
+using GameAnalyticsSDK;
 #if UNITY_MOBILE
 using UnityEngine.Advertisements;
 #endif
@@ -28,6 +29,7 @@ public class GameOverGUI : MonoBehaviour {
 
 	private void OnEnable()
 	{
+
         OnDisable();
         Lost.DOScale(Vector3.one, 0.5f);
         score.DOScale(Vector3.one, 0.75f);
@@ -37,7 +39,8 @@ public class GameOverGUI : MonoBehaviour {
               slider.DOFillAmount(1, 5);
               playbtn.DOScale(Vector3.one, .5f);
           });
-        
+
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "game", int.Parse(scoreText.text));
 
     }
 

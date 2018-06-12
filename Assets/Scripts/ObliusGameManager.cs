@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 using DG.Tweening;
+using GameAnalyticsSDK;
+
 public class ObliusGameManager : MonoBehaviour
 {
 	public Color[] floorColour, skyColour;
@@ -128,9 +130,9 @@ public class ObliusGameManager : MonoBehaviour
 
 		gameState = GameState.game;
 
-        
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start,"game");
 
-	}
+    }
 
 
 	IEnumerator FadeGame()
@@ -149,12 +151,12 @@ public class ObliusGameManager : MonoBehaviour
 		GUIManager.instance.mainMenuGUI.gameObject.SetActive(false);
 		CameraContainer.SetActive(false);
 		VehiclAnimator.SetActive(true);
-		VehiclAnimator.transform.DOMoveZ(-10, 5, false);
+		VehiclAnimator.transform.DOMoveZ(-10, 3.5f, false);
 
-		GUIManager.instance.FadeBlack.DOFade(0, 1.3f);
-		yield return new WaitForSeconds(2.5f);
+		GUIManager.instance.FadeBlack.DOFade(0, 1.0f);
+		yield return new WaitForSeconds(1f);
 		GUIManager.instance.FadeBlack.DOFade(1, 1f);
-		yield return new WaitForSeconds(1.3f);
+		yield return new WaitForSeconds(1f);
 		GUIManager.instance.FadeBlack.DOFade(0, 0.1f);
 		VehiclAnimator.SetActive(false);
 		CameraContainer.SetActive(true);

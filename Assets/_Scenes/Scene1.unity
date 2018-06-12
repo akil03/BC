@@ -3073,8 +3073,6 @@ MonoBehaviour:
   - {fileID: 1160627974513606, guid: 819cc8f9cdfb55d49a9fb3b16a77bf2d, type: 2}
   - {fileID: 1438640084816130, guid: de4355eee260fca4d8fdc40ec10d64af, type: 2}
   - {fileID: 1334328759668232, guid: e9c9dfbeef6486a4da1b7dcff455098f, type: 2}
-  - {fileID: 1325525158032448, guid: 09c90cb26b0efc44282d04b9d73402f7, type: 2}
-  - {fileID: 1404820696514968, guid: 896535301dcb27349a29b954e7d617f7, type: 2}
   - {fileID: 1653957873827742, guid: 422c2294d97d117489bdce259146a8ed, type: 2}
   usableColors:
   - {r: 1, g: 0.09803922, b: 0.09803922, a: 1}
