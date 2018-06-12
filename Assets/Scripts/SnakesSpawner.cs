@@ -10,15 +10,15 @@ public class SnakesSpawner : MonoBehaviour
 
 	public int maxEnemiesOnGround = 10;
 
-    public int maxPowersOnGround = 10;
+	public int maxPowersOnGround = 10;
 
-    public List<GameObject> randomSnakeMeshes;
+	public List<GameObject> randomSnakeMeshes;
 	public List<GameObject> shoppableSnakeMeshes;
 	public List<GameObject> usableSnakeMeshes;
-    public List<Color> usableColors;
+	public List<Color> usableColors;
 
-    public GameObject snakeMeshAssignedToPlayer;
-    public List<GameObject> PowerupsList;
+	public GameObject snakeMeshAssignedToPlayer;
+	public List<GameObject> PowerupsList;
 
 	public Snake playerSnake;
 
@@ -40,8 +40,8 @@ public class SnakesSpawner : MonoBehaviour
 		LoadUsableMeshesFromResources ();
 		//snakeMeshAssignedToPlayer = GetMeshUsedByPlayer ();
 		StartCoroutine (SpawnRoutine ());
-        StartCoroutine (SpawnPowers ());
-        
+		StartCoroutine (SpawnPowers ());
+		
 	}
 
 	public void SpawnPlayer ()
@@ -49,45 +49,45 @@ public class SnakesSpawner : MonoBehaviour
 		StartCoroutine (SpawnNewSnake (true));
 	}
 
-    public void KillAllSnakes()
-    {
-        //StopCoroutine(SpawnRoutine());
-        foreach(Snake S in spawnedSnakes)
-        {
-            try
-            {
-                spawnedSnakes.Remove(S);
-            }
-            catch { }
-            
-            Destroy(S.gameObject);
-        }
-            
-    }
+	public void KillAllSnakes()
+	{
+		//StopCoroutine(SpawnRoutine());
+		foreach(Snake S in spawnedSnakes)
+		{
+			try
+			{
+				spawnedSnakes.Remove(S);
+			}
+			catch { }
+			
+			Destroy(S.gameObject);
+		}
+			
+	}
 
-    public void SpawnEnemies()
-    {
+	public void SpawnEnemies()
+	{
 
-        while (spawnedEnemiesCount < maxEnemiesOnGround)
-        {
-           StartCoroutine(SpawnNewSnake(false));
-        }
-        //StartCoroutine(SpawnRoutine());
-    }
+		while (spawnedEnemiesCount < maxEnemiesOnGround)
+		{
+		   StartCoroutine(SpawnNewSnake(false));
+		}
+		//StartCoroutine(SpawnRoutine());
+	}
 
-    public IEnumerator SpawnPowers()
-    {
-        while (true)
-        {
+	public IEnumerator SpawnPowers()
+	{
+		while (true)
+		{
 
-            if (spawnedPowerCount < maxPowersOnGround)
-            {
-                yield return StartCoroutine(SpawnNewPowerup());
-            }
-            yield return new WaitForEndOfFrame();
-        }
-     
-    }
+			if (spawnedPowerCount < maxPowersOnGround)
+			{
+				yield return StartCoroutine(SpawnNewPowerup());
+			}
+			yield return new WaitForEndOfFrame();
+		}
+	 
+	}
 
 
 
@@ -162,27 +162,27 @@ public class SnakesSpawner : MonoBehaviour
 		StartCoroutine (newSnake.StartMove ());
 	}
 
-    public IEnumerator SpawnNewPowerup()
-    {
-        yield return null;
+	public IEnumerator SpawnNewPowerup()
+	{
+		yield return null;
 
-        int rand = Random.Range(0, PowerupsList.Count);
+		int rand = Random.Range(0, PowerupsList.Count);
 
-        GameObject go = PowerupsList[rand];
+		GameObject go = PowerupsList[rand];
 
-        go = GameObject.Instantiate(go);
+		go = GameObject.Instantiate(go);
 
-        Vector3 newPos = new Vector3(Random.Range(1,32),Random.Range(-1,-32),-1);
-        
-        go.transform.position = newPos;
+		Vector3 newPos = new Vector3(Random.Range(1,32),Random.Range(-1,-32),-1);
+		
+		go.transform.position = newPos;
 
-        spawnedPowerCount++;
-        
-    }
+		spawnedPowerCount++;
+		
+	}
 
 
 
-    public void SetPlayerSnakeColor ()
+	public void SetPlayerSnakeColor ()
 	{
 		Snake snake = FindObjectOfType<Snake> ();
 		SetSnakeMesh (snake);
@@ -198,25 +198,25 @@ public class SnakesSpawner : MonoBehaviour
 			meshToUse = snakeMeshAssignedToPlayer;
 		}
 
-        int rand = Random.Range(0, usableColors.Count);
-        snake.spriteColor = usableColors[rand];
-        snake.spriteColor = usableColors[rand];
-        usableColors.RemoveAt(rand);
+		int rand = Random.Range(0, usableColors.Count);
+		snake.spriteColor = usableColors[rand];
+		snake.spriteColor = usableColors[rand];
+		usableColors.RemoveAt(rand);
 
 
-        snake.snakeMeshContainer.SetSnakeMesh (meshToUse);
+		snake.snakeMeshContainer.SetSnakeMesh (meshToUse);
 		usableSnakeMeshes.Remove (meshToUse);
 	}
 
 	public void GetNotifiedSnakeDeath (Snake snake)
 	{
-        if(snake.isBot)
-		    usableSnakeMeshes.Add (snake.snakeMeshContainer.snakeMesh);
+		if(snake.isBot)
+			usableSnakeMeshes.Add (snake.snakeMeshContainer.snakeMesh);
 
-        usableColors.Add(snake.spriteColor);
+		usableColors.Add(snake.spriteColor);
 
 
-        spawnedSnakes.Remove (snake);
+		spawnedSnakes.Remove (snake);
 		if (snake.isBot) {
 			spawnedEnemiesCount--;
 		}
