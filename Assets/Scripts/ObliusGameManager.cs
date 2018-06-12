@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using DG.Tweening;
 using GameAnalyticsSDK;
+using Facebook.Unity;
 
 public class ObliusGameManager : MonoBehaviour
 {
@@ -33,13 +34,14 @@ public class ObliusGameManager : MonoBehaviour
 
 	void Awake ()
 	{
+        FB.Init();
 		Application.targetFrameRate = 60;
 		instance = this;
 	}
 	// Use this for initialization
 	void Start ()
 	{
-	   
+        
 	}
 
 	// Update is called once per frame
