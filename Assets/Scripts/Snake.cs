@@ -24,7 +24,7 @@ public class Snake : MonoBehaviour
 	public bool isCollectingNewGroundPieces;
 	public List<GroundPiece> tailGroundPieces;
 
-	public bool isBot;
+	public bool isBot,isDead;
 	public SnakeAI AI;
 
 	public bool haveToDie;
@@ -266,8 +266,8 @@ public class Snake : MonoBehaviour
 				}
 					
 
-				if (!isBot) {
-					ScoreHandler.instance.SetScore (ownedGroundPieces.Count);
+				if (!isBot&& !isDead) {
+					//ScoreHandler.instance.SetScore (ownedGroundPieces.Count);
 				}
 
 				isCollectingNewGroundPieces = false;
@@ -386,11 +386,12 @@ public class Snake : MonoBehaviour
 	public IEnumerator Die ()
 	{
 
-		//if (isShielded)
-		//    yield break;
+        //if (isShielded)
+        //    yield break;
+        isDead = true;
 
 
-		if (!isBot)
+        if (!isBot)
 		{
 			DisableBlackOut();
 			DisableTimeSlow();

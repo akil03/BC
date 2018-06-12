@@ -42,6 +42,8 @@ public class GameOverGUI : MonoBehaviour {
 
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "game", int.Parse(scoreText.text));
 
+        scoreText.text = ScoreHandler.instance.score.ToString();
+        highScoreText.text = ScoreHandler.instance.highScore.ToString();
     }
 
     private void OnDisable()
@@ -64,8 +66,7 @@ public class GameOverGUI : MonoBehaviour {
 		//highScoreText.text = "" + highscoreString + "%";
 
 
-		scoreText.text = ScoreHandler.instance.score.ToString();
-		highScoreText.text = ScoreHandler.instance.highScore.ToString();
+		
 
 		//diamondText.text = "" + ScoreHandler.instance.specialPoints;
 
