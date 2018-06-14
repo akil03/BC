@@ -510,6 +510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highscoreText: {fileID: 521157285}
   gamesPlayedText: {fileID: 1526696941}
+  specialPointsText: {fileID: 700151193}
   playerNameField: {fileID: 1858166077}
   loadingScreen: {fileID: 0}
 --- !u!114 &26420514
@@ -12031,7 +12032,7 @@ Transform:
   - {fileID: 1827230915}
   - {fileID: 1667165408}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1369651018
 MonoBehaviour:
@@ -19747,7 +19748,7 @@ Transform:
   m_Children:
   - {fileID: 236084353}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2116732326
 GameObject:

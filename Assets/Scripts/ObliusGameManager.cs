@@ -37,7 +37,8 @@ public class ObliusGameManager : MonoBehaviour
         FB.Init();
 		Application.targetFrameRate = 60;
 		instance = this;
-	}
+        GameAnalytics.Initialize();
+    }
 	// Use this for initialization
 	void Start ()
 	{
@@ -131,7 +132,7 @@ public class ObliusGameManager : MonoBehaviour
 		//SnakesSpawner.instance.SpawnEnemies();
 
 		gameState = GameState.game;
-
+        
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start,"game");
 
     }

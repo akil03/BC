@@ -390,6 +390,7 @@ public class Snake : MonoBehaviour
         //    yield break;
         isDead = true;
 
+        GameObject DP = Instantiate(destroyParticle, transform);
 
         if (!isBot)
 		{
@@ -400,9 +401,18 @@ public class Snake : MonoBehaviour
 			Handheld.Vibrate();
 		}
 
-		Instantiate(destroyParticle, transform);
+        if (!SnakesSpawner.instance.playerSnake)
+        {
+            DP.GetComponent<AudioSource>().volume = 0;
+        }
+        else if (Vector3.Distance(transform.position, SnakesSpawner.instance.playerSnake.transform.position) > 8)
+            DP.GetComponent<AudioSource>().volume = 0;
 
-		yield return  StartCoroutine (FadeOutTailPieces ());	
+
+
+
+
+        yield return  StartCoroutine (FadeOutTailPieces ());	
 		yield return StartCoroutine (FadeOutCollectedGroundPieces ());
 
 		foreach (GroundPiece piece in ownedGroundPieces) {
