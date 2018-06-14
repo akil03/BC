@@ -9,6 +9,7 @@ public class MainMenuGUI : MonoBehaviour
 
     public Text highscoreText;
     public Text gamesPlayedText;
+    public Text specialPointsText;
 	public InputField playerNameField;
 
     string originalHighScoreText;
@@ -27,7 +28,7 @@ public class MainMenuGUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        specialPointsText.text = ScoreHandler.instance.specialPoints.ToString();
     }
 
     // Update is called once per frame
