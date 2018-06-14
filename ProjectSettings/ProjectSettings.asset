@@ -126,7 +126,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.0
+  bundleVersion: 0.1
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -164,7 +164,7 @@ PlayerSettings:
     iOS: com.gu.smasharena
     tvOS: com.oblius.paperio
   buildNumber:
-    iOS: 0
+    iOS: 0.1
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
@@ -661,9 +661,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.1
   apiCompatibilityLevel: 2
-  cloudProjectId: 1c4df0fc-c395-42da-9438-ab7e69ec18f1
-  projectName: Paper.io
-  organizationId: obliusgames
+  cloudProjectId: 1e2027ab-38eb-4d15-984e-990163aae83d
+  projectName: Smash Arena
+  organizationId: innov8-labs
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
